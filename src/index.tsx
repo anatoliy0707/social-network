@@ -5,19 +5,19 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import {BrowserRouter} from "react-router-dom";
-import state, {addPost, subscriber, updateNewPostChange} from "./redux/state";
+import store from "./redux/state";
 
 const rerenderEntireTree = () => {
     ReactDOM.render(
         <BrowserRouter>
-            <App state={state} addPost={addPost} updateNewPostChange={updateNewPostChange}/>
+            <App state={store.getState()} addPost={store.addPost.bind(store)} updateNewPostChange={store.updateNewPostChange.bind(store)}/>
         </BrowserRouter>, document.getElementById("root"));
 }
 
 
 rerenderEntireTree()
 
-subscriber(rerenderEntireTree)
+store.subscriber(rerenderEntireTree)
 
 
 // If you want to start measuring performance in your app, pass a function
