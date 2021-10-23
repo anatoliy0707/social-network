@@ -1,3 +1,7 @@
+import {profileReducer} from "./profileReducer";
+import {dialogsReducer} from "./dialogsReducer";
+import {sidebarReducer} from "./sidebarReducer";
+
 const ADD_POST = "ADD-POST"
 const CHANGE_NEW_TEXT = "CHANGE-NEW-TEXT"
 const UPDATE_NEW_MESSAGE_BODY = 'UPDATE-NEW-MESSAGE-BODY'
@@ -16,7 +20,6 @@ export type ActionsTypes =
     | ReturnType<typeof changeNewPostTextAC>
     | ReturnType<typeof sendMessageAC>
     | ReturnType<typeof updateNewMessageBodyAC>
-
 
 
 export const addPostAC = (newPostText: string) => {
@@ -115,27 +118,13 @@ const store: StoreType = {
     },
 
     dispatch(action) {
-        if (action.type === ADD_POST) {
-            const newPost: postType = {
-                id: 5,
-                message: action.newPostText,
-                likesCounter: 0
-            }
-            this._state.profilePage.posts.push(newPost)
-            this._state.profilePage.newPostText = ""
-            this.rerenderEntireTree()
-        } else if (action.type === CHANGE_NEW_TEXT) {
-            this._state.profilePage.newPostText = action.newText
-            this.rerenderEntireTree()
-        } else if (action.type === UPDATE_NEW_MESSAGE_BODY) {
-            this._state.dialogsPage.newMessageBody = action.body
-            this.rerenderEntireTree()
-        } else if (action.type === SEND_MESSAGE) {
-            const body = this._state.dialogsPage.newMessageBody
-            this._state.dialogsPage.newMessageBody = ''
-            this._state.dialogsPage.messages.push({id: 6, message: body})
-            this.rerenderEntireTree()
-        }
+
+        this._state.profilePage = profileReducer(this._state.profilePage, action)
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action)
+        this._state = sidebarReducer(this._state, action)
+
+        this.rerenderEntireTree()
+
     }
 }
 
