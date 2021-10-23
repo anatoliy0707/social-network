@@ -19,3 +19,15 @@ export const dialogsReducer = (state: dialogsPageType, action: ActionsTypes) => 
     }
 
 }
+
+export const sendMessageAC = () => {
+    return {
+        type: SEND_MESSAGE
+    } as const
+}
+export const updateNewMessageBodyAC = (body: string) => {
+    return {
+        type: UPDATE_NEW_MESSAGE_BODY,
+        body: body
+    } as const
+}

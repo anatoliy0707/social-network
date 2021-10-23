@@ -1,11 +1,7 @@
-import {profileReducer} from "./profileReducer";
-import {dialogsReducer} from "./dialogsReducer";
+import {addPostAC, changeNewPostTextAC, profileReducer} from "./profileReducer";
+import {dialogsReducer, sendMessageAC, updateNewMessageBodyAC} from "./dialogsReducer";
 import {sidebarReducer} from "./sidebarReducer";
 
-const ADD_POST = "ADD-POST"
-const CHANGE_NEW_TEXT = "CHANGE-NEW-TEXT"
-const UPDATE_NEW_MESSAGE_BODY = 'UPDATE-NEW-MESSAGE-BODY'
-const SEND_MESSAGE = 'SEND-MESSAGE'
 
 export type StoreType = {
     _state: RootStateType
@@ -22,29 +18,8 @@ export type ActionsTypes =
     | ReturnType<typeof updateNewMessageBodyAC>
 
 
-export const addPostAC = (newPostText: string) => {
-    return {
-        type: ADD_POST,
-        newPostText: newPostText
-    } as const
-}
-export const changeNewPostTextAC = (newText: string) => {
-    return {
-        type: CHANGE_NEW_TEXT,
-        newText: newText
-    } as const
-}
-export const sendMessageAC = () => {
-    return {
-        type: SEND_MESSAGE
-    } as const
-}
-export const updateNewMessageBodyAC = (body: string) => {
-    return {
-        type: UPDATE_NEW_MESSAGE_BODY,
-        body: body
-    } as const
-}
+
+
 
 export type dialogType = {
     id: number;
