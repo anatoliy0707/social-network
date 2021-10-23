@@ -1,3 +1,6 @@
+const ADD_POST = "ADD-POST"
+const CHANGE_NEW_TEXT = "CHANGE-NEW-TEXT"
+
 export type StoreType = {
     _state: RootStateType
     rerenderEntireTree: () => void
@@ -6,29 +9,19 @@ export type StoreType = {
     dispatch: (action: ActionsTypes) => void
 }
 
-export type AddPostActionType = {
-    type: "ADD-POST"
-    newPostText: string
-}
+export type ActionsTypes = ReturnType<typeof addPostAC> | ReturnType<typeof changeNewPostTextAC>
 
-export type ChangeNewPostTextActionType = {
-    type: "CHANGE-NEW-TEXT"
-    newText: string
-}
-
-export type ActionsTypes = AddPostActionType | ChangeNewPostTextActionType
-
-export const addPostAC = (newPostText: string): AddPostActionType => {
+export const addPostAC = (newPostText: string) => {
     return {
-        type: "ADD-POST",
+        type: ADD_POST,
         newPostText: newPostText
-    }
+    } as const
 }
-export const changeNewPostTextAC = (newText: string): ChangeNewPostTextActionType => {
+export const changeNewPostTextAC = (newText: string) => {
     return {
-        type: "CHANGE-NEW-TEXT",
+        type: CHANGE_NEW_TEXT,
         newText: newText
-    }
+    } as const
 }
 
 export type dialogType = {
@@ -102,7 +95,7 @@ const store: StoreType = {
 
 
     dispatch(action) {
-        if (action.type === "ADD-POST") {
+        if (action.type === ADD_POST) {
             const newPost: postType = {
                 id: 5,
                 message: action.newPostText,
@@ -111,13 +104,12 @@ const store: StoreType = {
             this._state.profilePage.posts.push(newPost)
             this._state.profilePage.newPostText = ""
             this.rerenderEntireTree()
-        } else if (action.type === "CHANGE-NEW-TEXT") {
+        } else if (action.type === CHANGE_NEW_TEXT) {
             this._state.profilePage.newPostText = action.newText
             this.rerenderEntireTree()
         }
     }
 }
-
 
 export default store;
 
