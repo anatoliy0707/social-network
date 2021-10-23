@@ -1,5 +1,7 @@
 const ADD_POST = "ADD-POST"
 const CHANGE_NEW_TEXT = "CHANGE-NEW-TEXT"
+const UPDATE_NEW_MESSAGE_BODY = 'UPDATE-NEW-MESSAGE-BODY'
+const SEND_MESSAGE = 'SEND-MESSAGE'
 
 export type StoreType = {
     _state: RootStateType
@@ -9,7 +11,13 @@ export type StoreType = {
     dispatch: (action: ActionsTypes) => void
 }
 
-export type ActionsTypes = ReturnType<typeof addPostAC> | ReturnType<typeof changeNewPostTextAC>
+export type ActionsTypes =
+    ReturnType<typeof addPostAC>
+    | ReturnType<typeof changeNewPostTextAC>
+    | ReturnType<typeof sendMessageAC>
+    | ReturnType<typeof updateNewMessageBodyAC>
+
+
 
 export const addPostAC = (newPostText: string) => {
     return {
@@ -21,6 +29,17 @@ export const changeNewPostTextAC = (newText: string) => {
     return {
         type: CHANGE_NEW_TEXT,
         newText: newText
+    } as const
+}
+export const sendMessageAC = () => {
+    return {
+        type: SEND_MESSAGE
+    } as const
+}
+export const updateNewMessageBodyAC = (body: string) => {
+    return {
+        type: UPDATE_NEW_MESSAGE_BODY,
+        body: body
     } as const
 }
 
@@ -44,6 +63,7 @@ export type profilePageType = {
 export type dialogsPageType = {
     messages: Array<messageType>;
     dialogs: Array<dialogType>;
+    newMessageBody: string
 };
 export type sidebarType = {};
 export type RootStateType = {
@@ -79,6 +99,7 @@ const store: StoreType = {
                 {id: 5, name: "Viktor"},
                 {id: 6, name: "Valera"},
             ],
+            newMessageBody: '',
         },
         sidebar: {},
     },
@@ -93,7 +114,6 @@ const store: StoreType = {
         return this._state
     },
 
-
     dispatch(action) {
         if (action.type === ADD_POST) {
             const newPost: postType = {
@@ -106,6 +126,14 @@ const store: StoreType = {
             this.rerenderEntireTree()
         } else if (action.type === CHANGE_NEW_TEXT) {
             this._state.profilePage.newPostText = action.newText
+            this.rerenderEntireTree()
+        } else if (action.type === UPDATE_NEW_MESSAGE_BODY) {
+            this._state.dialogsPage.newMessageBody = action.body
+            this.rerenderEntireTree()
+        } else if (action.type === SEND_MESSAGE) {
+            const body = this._state.dialogsPage.newMessageBody
+            this._state.dialogsPage.newMessageBody = ''
+            this._state.dialogsPage.messages.push({id: 6, message: body})
             this.rerenderEntireTree()
         }
     }
