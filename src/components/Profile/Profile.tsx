@@ -6,7 +6,7 @@ import MyPostsContainer from "./MyPosts/MyPostsContainer";
 import {RootStoreType} from "../../redux/redux-store";
 
 type ProfilePropsType = {
-    store: RootStoreType
+    store?: RootStoreType
     // state: profilePageType;
     // dispatch: (action: ActionsTypes) => void
 };
@@ -15,7 +15,7 @@ function Profile(props: ProfilePropsType) {
     return (
         <div>
             <ProfileInfo/>
-            <MyPostsContainer  store={props.store}/>
+            <MyPostsContainer  />
         </div>
     );
 }

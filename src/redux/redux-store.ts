@@ -3,7 +3,7 @@ import {dialogsReducer} from "./dialogsReducer";
 import {profileReducer} from "./profileReducer";
 import {sidebarReducer} from "./sidebarReducer";
 
-
+export type RootStoreType = typeof store
 
 
 const reducers = combineReducers({
@@ -14,6 +14,6 @@ const reducers = combineReducers({
 
 const store = createStore(reducers);
 
-export type RootStoreType = typeof store
+
 
 export default store

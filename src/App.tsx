@@ -15,11 +15,10 @@ import {RootStoreType} from "./redux/redux-store";
 
 
 type AppPropsType = {
-    state: RootStateType;
-    dispatch: (action: ActionsTypes) => void
-    store: RootStoreType
+    state?: RootStateType;
+    dispatch?: (action: ActionsTypes) => void
+    store?: RootStoreType
 };
-
 function App(props: AppPropsType) {
     return (
 
@@ -29,11 +28,11 @@ function App(props: AppPropsType) {
             <div className="app-wrapper-content">
                 <Route
                     path="/dialogs"
-                    render={() => <DialogsContainer store={props.store}  />}
+                    render={() => <DialogsContainer />}
                 />
                 <Route
                     path="/profile"
-                    render={() => <Profile store={props.store} />}
+                    render={() => <Profile />}
                 />
                 <Route path="/news" render={() => <News/>}/>
                 <Route path="/music" render={() => <Music/>}/>
