@@ -17,10 +17,6 @@ export type ActionsTypes =
     | ReturnType<typeof sendMessageAC>
     | ReturnType<typeof updateNewMessageBodyAC>
 
-
-
-
-
 export type dialogType = {
     id: number;
     name: string;
@@ -96,7 +92,7 @@ const store: StoreType = {
 
         this._state.profilePage = profileReducer(this._state.profilePage, action)
         this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action)
-        this._state = sidebarReducer(this._state, action)
+        this._state.sidebar = sidebarReducer(this._state.sidebar, action)
 
         this.rerenderEntireTree()
 
