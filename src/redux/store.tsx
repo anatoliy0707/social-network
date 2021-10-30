@@ -6,7 +6,7 @@ import {sidebarReducer} from "./sidebarReducer";
 export type StoreType = {
     _state: RootStateType
     rerenderEntireTree: () => void
-    subscriber: (observer: () => void) => void
+    subscribe: (observer: () => void) => void
     getState: () => RootStateType
     dispatch: (action: ActionsTypes) => void
 }
@@ -81,7 +81,7 @@ const store: StoreType = {
         console.log('state changed')
     },
 
-    subscriber(observer: () => void) {
+    subscribe(observer: () => void) {
         this.rerenderEntireTree = observer
     },
     getState() {

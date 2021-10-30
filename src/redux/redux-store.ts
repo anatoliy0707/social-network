@@ -5,6 +5,7 @@ import {sidebarReducer} from "./sidebarReducer";
 
 
 
+
 const reducers = combineReducers({
     dialogsPage: dialogsReducer,
     profilePage: profileReducer,
@@ -12,5 +13,7 @@ const reducers = combineReducers({
 })
 
 const store = createStore(reducers);
+
+export type RootStoreType = typeof store
 
 export default store

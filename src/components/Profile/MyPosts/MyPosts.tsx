@@ -7,7 +7,9 @@ import {addPostAC, changeNewPostTextAC} from "../../../redux/profileReducer";
 type MyPostsPropsType = {
     posts: Array<postType>;
     newPostText: string
-    dispatch: (action: ActionsTypes) => void
+    updateNewPostText:(text: string) => void
+    addPost:() => void
+    // dispatch: (action: ActionsTypes) => void
 };
 
 
@@ -19,13 +21,16 @@ function MyPosts(props: MyPostsPropsType) {
 
     const newPostElement = React.createRef<HTMLTextAreaElement>()
 
+
     const addPostHandler = () => {
-        props.dispatch(addPostAC(props.newPostText))
+        props.addPost()
+        // props.dispatch(addPostAC(props.newPostText))
     }
 
     const onPostChangeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
         const text = e.currentTarget.value
-        props.dispatch(changeNewPostTextAC(text))
+        props.updateNewPostText(text)
+        // props.dispatch(changeNewPostTextAC(text))
     }
 
     return (
