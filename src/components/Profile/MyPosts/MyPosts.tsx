@@ -8,8 +8,7 @@ type MyPostsPropsType = {
     posts: Array<postType>;
     newPostText: string
     updateNewPostText:(text: string) => void
-    addPost:() => void
-    // dispatch: (action: ActionsTypes) => void
+    addPost:(newPostText: string) => void
 };
 
 
@@ -23,7 +22,7 @@ function MyPosts(props: MyPostsPropsType) {
 
 
     const addPostHandler = () => {
-        props.addPost()
+        props.addPost(props.newPostText)
         // props.dispatch(addPostAC(props.newPostText))
     }
 
