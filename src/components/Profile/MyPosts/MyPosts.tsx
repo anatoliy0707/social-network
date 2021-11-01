@@ -14,7 +14,7 @@ type MyPostsPropsType = {
 
 function MyPosts(props: MyPostsPropsType) {
     const postsElement = props.posts.map((post) => (
-        <Post message={post.message} likesCounter={post.likesCounter}/>
+        <Post key={post.id} message={post.message} likesCounter={post.likesCounter}/>
     ));
 
 
