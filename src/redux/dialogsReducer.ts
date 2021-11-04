@@ -3,8 +3,23 @@
 const UPDATE_NEW_MESSAGE_BODY = 'UPDATE-NEW-MESSAGE-BODY'
 const SEND_MESSAGE = 'SEND-MESSAGE'
 
-export type dialogsPageType = typeof initialState
-const initialState = {
+type MessagesType = {
+    id: number
+    message: string
+}
+
+type DialogsType = {
+    id: number
+    name: string
+}
+
+export type DialogsInitialStateType = {
+    messages: Array<MessagesType>
+    dialogs: Array<DialogsType>
+    newMessageBody: string
+}
+
+const initialState: DialogsInitialStateType = {
     messages: [
         {id: 1, message: "Hi"},
         {id: 2, message: "How are you?"},
@@ -23,7 +38,7 @@ const initialState = {
     newMessageBody: '',
 }
 
-export const dialogsReducer = (state: dialogsPageType = initialState, action: DialogsActionsTypes) => {
+export const dialogsReducer = (state: DialogsInitialStateType = initialState, action: DialogsActionsTypes): DialogsInitialStateType => {
 
     switch (action.type) {
         case UPDATE_NEW_MESSAGE_BODY:

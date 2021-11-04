@@ -3,13 +3,8 @@ import s from "./MyPosts.module.css";
 import Post from "./Post/Post";
 
 import {postType} from "../../../redux/profileReducer";
+import { MyPostsPropsType } from "./MyPostsContainer";
 
-type MyPostsPropsType = {
-    posts: Array<postType>;
-    newPostText: string
-    updateNewPostText:(text: string) => void
-    addPost:(newPostText: string) => void
-};
 
 
 function MyPosts(props: MyPostsPropsType) {
@@ -23,13 +18,11 @@ function MyPosts(props: MyPostsPropsType) {
 
     const addPostHandler = () => {
         props.addPost(props.newPostText)
-        // props.dispatch(addPostAC(props.newPostText))
     }
 
     const onPostChangeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
         const text = e.currentTarget.value
         props.updateNewPostText(text)
-        // props.dispatch(changeNewPostTextAC(text))
     }
 
     return (

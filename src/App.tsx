@@ -14,12 +14,8 @@ import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
 
 
-type AppPropsType = {
-    // state?: RootStateType;
-    // dispatch?: (action: ActionsTypes) => void
-    // store?: RootStoreType
-};
-function App(props: AppPropsType) {
+
+function App() {
     return (
 
         <div className="app-wrapper">

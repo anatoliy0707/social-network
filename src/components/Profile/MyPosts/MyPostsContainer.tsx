@@ -1,28 +1,28 @@
 import React, {ChangeEvent} from "react";
 import s from "./MyPosts.module.css";
 import Post from "./Post/Post";
-
-import {addPostAC, changeNewPostTextAC, ProfileActionsTypes} from "../../../redux/profileReducer";
+import {addPostAC, changeNewPostTextAC, postType, ProfileActionsTypes, profileInitialStateType} from "../../../redux/profileReducer";
 import MyPosts from "./MyPosts";
 import {AppStateType} from "../../../redux/redux-store";
-
 import {connect} from "react-redux";
+import { Dispatch } from "redux";
 
-type MyPostsPropsType = {
-    store?: AppStateType
-    // state: profilePageType;
-    // dispatch: (action: ActionsTypes) => void
-};
+type MapStatePropsType = profileInitialStateType
+type MapDispatchPropsType = {
+    addPost: (newPostText: string) => void
+    updateNewPostText: (text: string) => void
+}
 
+export type MyPostsPropsType = MapStatePropsType & MapDispatchPropsType
 
-const mapStateToProps = (state: AppStateType) => {
+const mapStateToProps = (state: AppStateType): MapStatePropsType => {
     return {
         posts: state.profilePage.posts,
         newPostText: state.profilePage.newPostText
     }
 }
 
-const mapDispatchToProps = (dispatch: (action: ProfileActionsTypes) => void) => {
+const mapDispatchToProps = (dispatch: Dispatch): MapDispatchPropsType => {
     return {
         addPost: (newPostText: string) => {
             dispatch(addPostAC(newPostText))

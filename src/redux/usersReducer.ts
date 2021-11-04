@@ -22,32 +22,7 @@ export type initialStateType = {
 }
 
 const initialState: initialStateType = {
-    users: [
-        {
-            id: 1,
-            photoUrl: 'https://funpick.ru/wp-content/uploads/2018/01/kak-narisovat-minona.jpg',
-            followed: false,
-            fullName: 'Dmitry',
-            status: 'i am a boss',
-            location: {city: 'Minsk', country: 'Belarus'}
-        },
-        {
-            id: 2,
-            photoUrl: 'https://funpick.ru/wp-content/uploads/2018/01/kak-narisovat-minona.jpg',
-            followed: true,
-            fullName: 'Sasha',
-            status: 'i am a boss too',
-            location: {city: 'Moscow', country: 'Russia'}
-        },
-        {
-            id: 3,
-            photoUrl: 'https://funpick.ru/wp-content/uploads/2018/01/kak-narisovat-minona.jpg',
-            followed: false,
-            fullName: 'Olya',
-            status: 'and i am a boss',
-            location: {city: 'Kiev', country: 'Ukraine'}
-        }
-    ]
+    users: []
 }
 
 export const userReducer = (state: initialStateType = initialState, action: UsersActionsType): initialStateType => {

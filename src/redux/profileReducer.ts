@@ -6,8 +6,12 @@ export type postType = {
     message: string;
     likesCounter: number;
 }
-type profilePageType = typeof initialState
-const initialState = {
+export type profileInitialStateType = {
+    posts: Array<postType>
+    newPostText: string
+}
+
+const initialState: profileInitialStateType = {
     posts: [
         {id: 1, message: "Hi, how are you?", likesCounter: 12},
         {id: 2, message: "Hi", likesCounter: 10},
@@ -17,11 +21,10 @@ const initialState = {
     newPostText: ""
 }
 
-export const profileReducer = (state: profilePageType = initialState, action: ProfileActionsTypes) => {
+export const profileReducer = (state: profileInitialStateType = initialState, action: ProfileActionsTypes): profileInitialStateType => {
 
     switch (action.type) {
         case ADD_POST:
-            // state.newPostText = ''
             return {
                 ...state,
                 posts: [...state.posts, {id: 5, message: action.newPostText, likesCounter: 0}],
