@@ -9,15 +9,15 @@ import {Route} from "react-router-dom";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Setting from "./components/Setting/Setting";
-import {ActionsTypes, RootStateType} from "./redux/store";
+
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
-import {RootStoreType} from "./redux/redux-store";
+import UsersContainer from "./components/Users/UsersContainer";
 
 
 type AppPropsType = {
-    state?: RootStateType;
-    dispatch?: (action: ActionsTypes) => void
-    store?: RootStoreType
+    // state?: RootStateType;
+    // dispatch?: (action: ActionsTypes) => void
+    // store?: RootStoreType
 };
 function App(props: AppPropsType) {
     return (
@@ -34,6 +34,7 @@ function App(props: AppPropsType) {
                     path="/profile"
                     render={() => <Profile />}
                 />
+                <Route path="/users" render={() => <UsersContainer/>}/>
                 <Route path="/news" render={() => <News/>}/>
                 <Route path="/music" render={() => <Music/>}/>
                 <Route path="/setting" render={() => <Setting/>}/>

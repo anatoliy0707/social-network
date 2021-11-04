@@ -1,12 +1,12 @@
 import React from "react";
-import {ActionsTypes, profilePageType} from "../../redux/store";
+
 
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
-import {RootStoreType} from "../../redux/redux-store";
+import {AppStateType} from "../../redux/redux-store";
 
 type ProfilePropsType = {
-    store?: RootStoreType
+    store?: AppStateType
     // state: profilePageType;
     // dispatch: (action: ActionsTypes) => void
 };
