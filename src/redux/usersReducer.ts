@@ -10,22 +10,22 @@ type LocationType = {
 
 export type UserType = {
     id: number
-    photoUrl: string
+    photos: {small: string, large: string}
     followed: boolean
-    fullName: string
+    name: string
     status: string
     location: LocationType
 }
 
-export type initialStateType = {
+export type initialUsersStateType = {
     users: Array<UserType>
 }
 
-const initialState: initialStateType = {
+const initialState: initialUsersStateType = {
     users: []
 }
 
-export const userReducer = (state: initialStateType = initialState, action: UsersActionsType): initialStateType => {
+export const userReducer = (state: initialUsersStateType = initialState, action: UsersActionsType): initialUsersStateType => {
     switch (action.type) {
         case FOLLOW:
             return {...state, users: state.users.map(u => u.id === action.userId ? {...u, followed: true} : u)}
