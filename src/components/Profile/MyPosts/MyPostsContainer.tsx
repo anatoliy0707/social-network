@@ -6,6 +6,7 @@ import MyPosts from "./MyPosts";
 import {AppStateType} from "../../../redux/redux-store";
 import {connect} from "react-redux";
 import { Dispatch } from "redux";
+import MyPostsC from "./MyPostsC";
 
 type MapStatePropsType = profileInitialStateType
 type MapDispatchPropsType = {
@@ -33,6 +34,6 @@ const mapDispatchToProps = (dispatch: Dispatch): MapDispatchPropsType => {
     }
 }
 
-const MyPostsContainer = connect(mapStateToProps, mapDispatchToProps) (MyPosts)
+const MyPostsContainer = connect(mapStateToProps, mapDispatchToProps) (MyPostsC)
 
 export default MyPostsContainer;
