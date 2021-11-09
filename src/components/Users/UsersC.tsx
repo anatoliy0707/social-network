@@ -7,14 +7,37 @@ import userPhoto from "../../assets/images/user.png"
 
 class UsersC extends React.Component<UsersPropsType> {
     componentDidMount(): void {
-        axios.get("https://social-network.samuraijs.com/api/1.0/users").then(response => {
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.usersPage.pageSize}&page=${this.props.usersPage.currentPage}`).then(response => {
+            this.props.setUsers(response.data.items)
+            this.props.setTotalUsersCount(response.data.totalCount)
+        })
+    }
+
+    onPageChanged = (pageNumber: number) => {
+        this.props.setCurrentPage(pageNumber)
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.usersPage.pageSize}&page=${pageNumber}`).then(response => {
             this.props.setUsers(response.data.items)
         })
     }
 
     render(): React.ReactNode {
+
+        const pageNumbers = Math.ceil(this.props.usersPage.totalCount / this.props.usersPage.pageSize)
+        const arrPageNumbers = []
+        for (let i = 1; i <= pageNumbers; i++) {
+            arrPageNumbers.push(i)
+        }
         return (
             <div>
+                <nav>
+                    {arrPageNumbers.map((p, index) => {
+                        return <span onClick={() => {
+                            this.onPageChanged(p)
+                        }} key={index}
+                                     className={this.props.usersPage.currentPage === p ? s.selectedPage : ''}>{p}</span>
+                    })}
+
+                </nav>
                 {this.props.usersPage.users.map(u => {
                     return (
                         <div key={u.id}>
