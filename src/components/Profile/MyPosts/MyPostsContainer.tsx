@@ -1,12 +1,9 @@
-import React, {ChangeEvent} from "react";
-import s from "./MyPosts.module.css";
-import Post from "./Post/Post";
-import {addPostAC, changeNewPostTextAC, postType, ProfileActionsTypes, profileInitialStateType} from "../../../redux/profileReducer";
-import MyPosts from "./MyPosts";
+import React from "react";
+import {addPostAC, changeNewPostTextAC, profileInitialStateType} from "../../../redux/profileReducer";
 import {AppStateType} from "../../../redux/redux-store";
 import {connect} from "react-redux";
 import { Dispatch } from "redux";
-import MyPostsC from "./MyPostsC";
+import MyPosts from "./MyPosts";
 
 type MapStatePropsType = profileInitialStateType
 type MapDispatchPropsType = {
@@ -34,6 +31,6 @@ const mapDispatchToProps = (dispatch: Dispatch): MapDispatchPropsType => {
     }
 }
 
-const MyPostsContainer = connect(mapStateToProps, mapDispatchToProps) (MyPostsC)
+const MyPostsContainer = connect(mapStateToProps, mapDispatchToProps) (MyPosts)
 
 export default MyPostsContainer;

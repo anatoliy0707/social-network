@@ -30,7 +30,7 @@ export const UsersC = (props: UsersCPropsType) => {
                 {arrPagesNumbers.map((p, index) => {
                     return <span onClick={ () => onClickHandlerForPageChange(p) }
                                  key={index}
-                                 className={props.currentPage === p ? s.selectedPage : ''}>{p}</span>
+                                 className={props.currentPage === p ? s.selectedPage : ''}>-{p}-</span>
                 })}
 
             </nav>
