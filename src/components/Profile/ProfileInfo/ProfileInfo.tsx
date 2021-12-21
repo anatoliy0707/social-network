@@ -1,10 +1,11 @@
 import React from "react";
 import s from "./ProfileInfo.module.css";
 import {Preloader} from "../../common/Preloader/Preloader";
+import {ProfileType} from "../../../redux/profileReducer";
 
 
 type TProfileInfoProps = {
-    profile: any
+    profile: ProfileType | null
 }
 function ProfileInfo(props: TProfileInfoProps) {
     if (!props.profile) {
@@ -21,6 +22,7 @@ function ProfileInfo(props: TProfileInfoProps) {
       </div>
         <img src={props.profile.photos.small} alt=""/>
         <span>{props.profile.aboutMe}</span>
+        <div>{props.profile.fullName}</div>
       <div className={s.descriptionBlock}>ava+description</div>
     </div>
   );

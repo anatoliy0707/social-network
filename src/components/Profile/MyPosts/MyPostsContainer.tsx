@@ -2,7 +2,6 @@ import React from "react";
 import {addPost, changeNewPostText, profileInitialStateType} from "../../../redux/profileReducer";
 import {AppStateType} from "../../../redux/redux-store";
 import {connect} from "react-redux";
-import { Dispatch } from "redux";
 import MyPosts from "./MyPosts";
 
 type MapStatePropsType = profileInitialStateType

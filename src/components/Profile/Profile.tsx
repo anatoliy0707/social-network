@@ -1,9 +1,10 @@
 import React from "react";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
+import {ProfileType} from "../../redux/profileReducer";
 
 type TProfileProps = {
-    profile: any
+    profile: ProfileType | null
 }
 
 function Profile(props: TProfileProps) {
