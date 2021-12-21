@@ -1,5 +1,4 @@
 import React from "react";
-import loading from "./../../assets/images/loading.svg";
 import {connect} from "react-redux";
 import {
     follow,
@@ -9,10 +8,10 @@ import {
     UserType
 } from "../../redux/usersReducer";
 import {AppStateType} from "../../redux/redux-store";
-import {Dispatch} from "redux";
-import UsersC from "./UsersC";
 import axios from "axios";
 import {Preloader} from "../common/Preloader/Preloader";
+import {Users} from "./Users";
+
 
 
 type MapStateType = {
@@ -59,13 +58,13 @@ class UsersContainer extends React.Component<UsersPropsType> {
     render(): React.ReactNode {
         return <>
             {this.props.isFetching && <Preloader/>}
-            <UsersC users={this.props.users}
-                    currentPage={this.props.currentPage}
-                    follow={this.props.follow}
-                    onPageChanged={this.onPageChanged}
-                    pageSize={this.props.pageSize}
-                    totalCount={this.props.totalCount}
-                    unfollow={this.props.unfollow}
+            <Users users={this.props.users}
+                   currentPage={this.props.currentPage}
+                   follow={this.props.follow}
+                   onPageChanged={this.onPageChanged}
+                   pageSize={this.props.pageSize}
+                   totalCount={this.props.totalCount}
+                   unfollow={this.props.unfollow}
 
             />
         </>

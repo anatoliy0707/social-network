@@ -2,6 +2,7 @@ import React from "react";
 import s from "./Users.module.css";
 import userPhoto from "../../assets/images/user.png"
 import {UserType} from "../../redux/usersReducer";
+import {NavLink} from "react-router-dom";
 
 type UsersCPropsType = {
     totalCount: number
@@ -13,7 +14,7 @@ type UsersCPropsType = {
     unfollow: (userId: number) => void
 }
 
-export const UsersC = (props: UsersCPropsType) => {
+export const Users = (props: UsersCPropsType) => {
 
     const pages = Math.ceil(props.totalCount / props.pageSize)
     const arrPagesNumbers: number[] = []
@@ -28,7 +29,7 @@ export const UsersC = (props: UsersCPropsType) => {
         <div>
             <nav>
                 {arrPagesNumbers.map((p, index) => {
-                    return <span onClick={ () => onClickHandlerForPageChange(p) }
+                    return <span onClick={() => onClickHandlerForPageChange(p)}
                                  key={index}
                                  className={props.currentPage === p ? s.selectedPage : ''}>-{p}-</span>
                 })}
@@ -39,8 +40,10 @@ export const UsersC = (props: UsersCPropsType) => {
                     <div key={u.id}>
                         <span>
                             <div>
+                                <NavLink to={'/profile/' + u.id}>
                                 <img src={u.photos.small !== null ? u.photos.small : userPhoto}
                                      className={s.userImage}/>
+                                     </NavLink>
                             </div>
                             <div>
                                 {u.followed
@@ -65,4 +68,3 @@ export const UsersC = (props: UsersCPropsType) => {
     )
 }
 
-export default UsersC

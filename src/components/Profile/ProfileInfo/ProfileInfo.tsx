@@ -1,7 +1,16 @@
 import React from "react";
 import s from "./ProfileInfo.module.css";
+import {Preloader} from "../../common/Preloader/Preloader";
 
-function ProfileInfo() {
+
+type TProfileInfoProps = {
+    profile: any
+}
+function ProfileInfo(props: TProfileInfoProps) {
+    if (!props.profile) {
+        return <Preloader/>
+    }
+
   return (
     <div>
       <div>
@@ -10,6 +19,8 @@ function ProfileInfo() {
           alt="img"
         />
       </div>
+        <img src={props.profile.photos.small} alt=""/>
+        <span>{props.profile.aboutMe}</span>
       <div className={s.descriptionBlock}>ava+description</div>
     </div>
   );

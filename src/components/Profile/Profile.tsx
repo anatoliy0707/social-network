@@ -1,20 +1,15 @@
 import React from "react";
-
-
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
-import {AppStateType} from "../../redux/redux-store";
 
-type ProfilePropsType = {
-    store?: AppStateType
-    // state: profilePageType;
-    // dispatch: (action: ActionsTypes) => void
-};
+type TProfileProps = {
+    profile: any
+}
 
-function Profile(props: ProfilePropsType) {
+function Profile(props: TProfileProps) {
     return (
         <div>
-            <ProfileInfo/>
+            <ProfileInfo profile={props.profile}/>
             <MyPostsContainer  />
         </div>
     );

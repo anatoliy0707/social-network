@@ -12,6 +12,7 @@ import Setting from "./components/Setting/Setting";
 
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
+import ProfileContainer from "./components/Profile/ProfileContainer";
 
 
 
@@ -28,7 +29,7 @@ function App() {
                 />
                 <Route
                     path="/profile"
-                    render={() => <Profile />}
+                    render={() => <ProfileContainer />}
                 />
                 <Route path="/users" render={() => <UsersContainer/>}/>
                 <Route path="/news" render={() => <News/>}/>

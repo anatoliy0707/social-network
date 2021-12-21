@@ -6,6 +6,7 @@ import { MyPostsPropsType } from "./MyPostsContainer";
 
 
 
+
 function MyPosts(props: MyPostsPropsType) {
     const postsElement = props.posts.map((post) => (
         <Post key={post.id} message={post.message} likesCounter={post.likesCounter}/>
@@ -21,7 +22,7 @@ function MyPosts(props: MyPostsPropsType) {
 
     const onPostChangeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
         const text = e.currentTarget.value
-        props.updateNewPostText(text)
+        props.changeNewPostText(text)
     }
 
     return (
