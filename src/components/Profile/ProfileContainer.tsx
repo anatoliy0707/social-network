@@ -25,7 +25,6 @@ class ProfileContainer extends React.Component<TProps> {
 
     componentDidMount(): void {
         let userId = this.props.match.params.userId
-        debugger
         if (!userId) {
             userId = "2"
         }
@@ -37,7 +36,7 @@ class ProfileContainer extends React.Component<TProps> {
 
     render() {
         return (
-           <Profile {...this.props} profile={this.props.profile} />
+           <Profile {...this.props} />
         );
     }
 }

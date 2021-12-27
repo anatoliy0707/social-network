@@ -20,7 +20,7 @@ function ProfileInfo(props: TProfileInfoProps) {
           alt="img"
         />
       </div>
-        <img src={props.profile.photos.small} alt=""/>
+        <img src={props.profile.photos.large} alt=""/>
         <span>{props.profile.aboutMe}</span>
         <div>{props.profile.fullName}</div>
       <div className={s.descriptionBlock}>ava+description</div>
