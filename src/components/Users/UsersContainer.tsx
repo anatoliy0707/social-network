@@ -27,7 +27,6 @@ type mapDispatchType = {
 
 export type UsersPropsType = MapStateType & mapDispatchType
 
-
 class UsersContainer extends React.Component<UsersPropsType> {
     componentDidMount(): void {
         this.props.getUsers(this.props.pageSize, this.props.currentPage)
