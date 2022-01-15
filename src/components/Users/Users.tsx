@@ -1,8 +1,8 @@
 import React from "react";
 import s from "./Users.module.css";
 import userPhoto from "../../assets/images/user.png"
-import {UserType} from "../../redux/usersReducer";
 import {NavLink} from "react-router-dom";
+import {UserType} from "../../api/api";
 
 
 type UsersCPropsType = {

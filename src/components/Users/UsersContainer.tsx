@@ -1,13 +1,14 @@
 import React from "react";
 import {connect} from "react-redux";
 import {
-    UserType, getUsers, getUsersOnPageChange, follow, unfollow
+     getUsers, getUsersOnPageChange, follow, unfollow
 } from "../../redux/usersReducer";
 import {AppStateType} from "../../redux/redux-store";
 import {Preloader} from "../common/Preloader/Preloader";
 import {Users} from "./Users";
 import {compose} from "redux";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
+import {UserType} from "../../api/api";
 
 
 type MapStateType = {

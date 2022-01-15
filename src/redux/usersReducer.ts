@@ -1,4 +1,4 @@
-import {usersAPI} from "../api/api";
+import {usersAPI, UserType} from "../api/api";
 import {Dispatch} from "redux";
 
 const FOLLOW = 'FOLLOW'
@@ -15,14 +15,14 @@ type LocationType = {
     country: string
 }
 
-export type UserType = {
-    id: number
-    photos: { small: string, large: string }
-    followed: boolean
-    name: string
-    status: string
-    location: LocationType
-}
+// export type UserType = {
+//     id: number
+//     photos: { small: string, large: string }
+//     followed: boolean
+//     name: string
+//     status: string
+//     location: LocationType
+// }
 
 export type InitialUsersStateType = {
     users: Array<UserType>
