@@ -52,9 +52,10 @@ type GetProfileResponseType = {
 }
 export const usersAPI = {
 
-    setUsers(pageSize: number = 1, currentPage: number = 10) {
-        return instance.get<SetUsersResponseType>(`users?count=${pageSize}&page=${currentPage}`)
-            .then(response => response.data)
+     setUsers: async (pageSize: number = 1, currentPage: number = 10) => {
+        return (await instance.get<SetUsersResponseType>(`users?count=${pageSize}&page=${currentPage}`))
+            // .then(response => response.data)
+            .data
     },
 
     setUnfollow(userId: number) {

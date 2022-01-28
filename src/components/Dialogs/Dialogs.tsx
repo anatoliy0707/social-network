@@ -1,9 +1,9 @@
-import React, {ChangeEvent} from "react";
+import React from "react";
 import s from "./Dialogs.module.css";
 import Message from "./Message/Message";
 import DialogItem from "./DialogItem/DialogsItem";
 import {DialogPropsType} from "./DialogsContainer";
-
+import {AddMessageReduxForm, FormDataType} from "./Message/AddMessageForm/AddMessageForm";
 
 
 function Dialogs(props: DialogPropsType) {
@@ -16,26 +16,18 @@ function Dialogs(props: DialogPropsType) {
         <Message message={message.message} key={message.id}/>
     ));
 
-    const newMessageBody = state.newMessageBody
 
-    const addMessageHandler = () => {
-        props.sendMessage()
+
+    const onSubmit = (formData: FormDataType) => {
+      //  debugger
+        props.sendMessage(formData.message)
     }
-    const onNewMessageChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        const body = e.currentTarget.value
-        props.updateNewMessageBody(body)
-    }
-
-
 
     return (
         <div className={s.dialogs}>
             <div className={s.dialogsItems}>{dialogsElements}</div>
             <div className={s.messages}>{messagesElements}</div>
-            <div>
-                <textarea value={newMessageBody} onChange={onNewMessageChange} placeholder={'enter text!'}/>
-                <button onClick={addMessageHandler}>Add message</button>
-            </div>
+           <AddMessageReduxForm onSubmit={onSubmit}/>
         </div>
     );
 }
