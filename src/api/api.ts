@@ -52,7 +52,7 @@ type GetProfileResponseType = {
 }
 export const usersAPI = {
 
-     setUsers: async (pageSize: number = 1, currentPage: number = 10) => {
+    setUsers: async (pageSize: number = 1, currentPage: number = 10) => {
         return (await instance.get<SetUsersResponseType>(`users?count=${pageSize}&page=${currentPage}`))
             // .then(response => response.data)
             .data
@@ -83,15 +83,27 @@ type AuthGetMeResponseType = {
     messages: string[]
     resultCode: number
 }
+
+type LoginResponseType = {
+    resultCode: number
+    messages: Array<string>
+    data: {
+        userId: string
+    }
+}
 export const authAPI = {
     me() {
         return instance.get<AuthGetMeResponseType>(`auth/me`)
-    }
+    },
+    login(email: string, password: string, rememberMe: boolean = false) {
+        return instance.post<LoginResponseType>(`auth/login`, {email, password, rememberMe})
+    },
+    logOut() {
+        return instance.delete(`auth/login`)
+    },
 }
 
-type GetStatusResponseType = {
-
-}
+type GetStatusResponseType = {}
 export const profileAPI = {
     getProfile(userId: string) {
         return instance.get<GetProfileResponseType>(`profile/${userId}`)
