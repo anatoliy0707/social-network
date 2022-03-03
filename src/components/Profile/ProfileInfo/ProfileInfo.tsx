@@ -2,7 +2,7 @@ import React from "react";
 import s from "./ProfileInfo.module.css";
 import {Preloader} from "../../common/Preloader/Preloader";
 import {ProfileType} from "../../../redux/profileReducer";
-import ProfileStatus from "./ProfileStatus";
+import ProfileStatusWithHook from "./ProfileStatusWithHook";
 
 
 type TProfileInfoProps = {
@@ -26,7 +26,7 @@ function ProfileInfo(props: TProfileInfoProps) {
             {/*</div>*/}
             <img src={props.profile.photos.large} alt=""/>
             <div className={s.descriptionBlock}>
-                <ProfileStatus status={props.status} updateUserStatus={props.updateUserStatus}/>
+                <ProfileStatusWithHook status={props.status} updateUserStatus={props.updateUserStatus}/>
             </div>
         </div>
     );

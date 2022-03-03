@@ -127,7 +127,7 @@ export const toggleFollowingProgress = (isFetching: boolean, userId: number) => 
 
 
 
-
+// thunk
 export const requestUsers = (pageSize: number, currentPage: number) => (dispatch: Dispatch<UsersActionsType>) => {
 
     dispatch(toggleIsFetching(true))
