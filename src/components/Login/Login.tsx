@@ -6,6 +6,7 @@ import {connect} from "react-redux";
 import {login} from "../../redux/authReducer";
 import {Redirect} from 'react-router-dom';
 import {AppStateType} from "../../redux/redux-store";
+import style from '../common/FormsControls/FormsControl.module.css'
 
 
 type FormDataType = {
@@ -37,6 +38,9 @@ const LoginForm = (props: InjectedFormProps<FormDataType>) => {
                     <Field component={"input"} name={"rememberMe"} type={"checkbox"}/> Remember me
                 </div>
                 <div>
+                    {props.error && <div className={style.formSumError}>
+                        {props.error}
+                    </div>}
                     <button>Login</button>
                 </div>
             </form>
